@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prashant</title>
+    <link rel="stylesheet" href="{% static 'enroll/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'enroll/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'enroll/css/prashant.css' %}">
+</head>
+<body>
+    <script src="{% static 'enroll/js/bootstrap.js'%}"></script>
+    <script src="{% static 'enroll/js/jquery.js'%}"></script>
+    <script src="{% static 'enroll/js/popper.js'%}"></script>
+    <div class="container-fluid bg-dark">
+    {% include 'enroll/navbar.html' %}
+    </div>
+    <div class="container-fluid bg-light">
+        <div class="row">
+            <div class="col-sm-1"></div>
+            {% block c1 %} {% endblock %}
+            <div class="col-sm-1"></div>
+        </div>
+    </div>
+</body>
+</html>

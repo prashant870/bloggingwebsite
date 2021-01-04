@@ -1,0 +1,46 @@
+{% extends 'enroll/base.html' %}
+{% block c1 %}
+<div class="col-sm-10">
+<a href="{% url 'add' %}" class="btn btn-info my-3">Add Post....</a>
+{% if posts %}
+<table class="table table-hover bg-grey">
+<tr style="border:1px solid black;" class="text-center">
+
+<th scope="col">ID</th>
+<th scope="col">Title</th>
+<th scope="col">Content</th>
+<th scope="col">update</th>
+<th scope="col">delete</th>
+</tr>
+{% for pst in posts %}
+<tr style="border:1px solid black; box-shadow:3px 4px grey;" >
+<div class="golu">
+<td scope="row">{{pst.id}}</td>
+<td>{{pst.title}}</td>
+<td>{{pst.content|safe}}</td>
+{% if user.is_authenticated %}
+    {% if user.id == pst.author.id%}
+        <td><a href="{% url 'update' pst.id %}" class="btn btn-info">Edit</a></td>
+        <td>
+        <form action="{% url 'delete' pst.id %}" method="POST">
+        {% csrf_token %}
+        <input type="submit" value="Delete" class="btn btn-info">
+        </form>
+        </td>
+    {% else %}
+        <td></td>
+        <td></td>
+    {% endif %}
+{% else %}
+<td></td>
+<td></td>
+{% endif %}
+</div>
+</tr>
+{% endfor %}
+</table>
+{% else %}
+<h1>No record</h1>
+{% endif %}
+</div>
+{% endblock c1 %} 

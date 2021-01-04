@@ -1,0 +1,33 @@
+{% extends 'enroll/base.html' %}
+{% block c1 %}
+<div class="col-sm-8">
+  {% for post in pm %}
+    <div class="container text-white mt-3" style="background-color:darkgrey;box-shadow:0 10px 6px -6px #777;">
+        <h1 style="color:green;">{{post.title}}</h1>
+        <small style="color:red;">BY:{{post.author.username}}</small>
+        <p>{{post.content|safe}}</p>
+        <p>{{post.editor|safe}}</p>
+    </div><br>
+  {% endfor %} 
+  <div class="btn-group" role="group">
+  <span>
+    {% if pm.has_previous %}
+    <button type="button" class="btn btn-outline-success" >
+      <a href="?page={{pm.previous_page_number}}">Previous</a>
+    </button>
+    {% endif %}
+  </span>
+  <button type="button" class="btn btn-outline-success" >
+  <span>{{pm.number}}</span>
+  </button>
+  <span>
+    {% if pm.has_next %}
+    <button type="button" class="btn btn-outline-success" >
+      <a href="?page={{pm.next_page_number}}">Next</a>
+    </button>
+    {% endif %}
+  </span>
+  </div>
+  </br>
+</div>
+{% endblock c1 %}
